@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Reviews</title>
+    <title>Movies</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <header class="container mx-auto">
+    <h1 class="container mx-auto mb-6">Movie Reviews</h1>
+  </header>
+    <main class="container mx-auto m2-6 flex-col">
+    <div class="container my-2">
+      <%= yield %>
+      </div>
+    </main>
+    <footer class="container mx-auto">
+       Copygright &copy; <%= Date.today.year %>
+       </footer>
   </body>
 </html>

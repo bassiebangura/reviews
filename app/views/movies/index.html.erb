@@ -1,9 +1,15 @@
-<h1>Movies</h1>
-<ul>
-   <% @movies.each do |movie| %>
-        <li><strong><%= movie.title %></strong>
-        (<%= movie.rating%>): <%= number_to_currency(movie.total_gross, precision: 0)%></li>
-    
-   <% end %>
-</ul>
+
+
+<% @movies.each do |movie| %>
+   <section class="movie">
+   <div class="summary">
+       <h2><%= movie.title %></h2></div> 
+      <h3><%= format_total_gross(movie) %></h3>
+      </i>
+      <br/>
+      <p><%= truncate(movie.description, length: 50, separator: ' ') %></p>
+ </div>
+      </section>
+<% end %>
+
 
