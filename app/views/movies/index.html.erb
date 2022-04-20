@@ -3,13 +3,16 @@
 <% @movies.each do |movie| %>
    <section class="movie">
    <div class="summary">
-       <h2><%= movie.title %></h2></div> 
-      <h3><%= format_total_gross(movie) %></h3>
+       <h2>  <%= link_to(movie.title, movie) %></h2> 
+      <h3><%= movie.total_gross %></h3>
       </i>
       <br/>
       <p><%= truncate(movie.description, length: 50, separator: ' ') %></p>
  </div>
       </section>
 <% end %>
+<section class="admin">
+     <%= link_to("Add New Event", new_movie_path, class: "button") %>
+</section>
 
 

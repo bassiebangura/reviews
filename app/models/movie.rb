@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
     def flopper?
-        total_gross.blank? || total_gross < 50000000
+        total_gross.blank? || total_gross < 500000000
     end
 end
