@@ -138,3 +138,26 @@ Movie.create!([
     total_gross: 821_847_012
   }
 ])
+
+Review.create!(
+  [
+    {
+    name: "Bassie",
+    stars: 4,
+    comment: "Constant Suspense",
+    movie_id: 2,
+  },
+  {
+    name: "Shabreya",
+    stars: 5,
+    comment: "Great",
+    movie_id: 5,
+  },
+  {
+    name: "Joseph",
+    stars: 4,
+    comment: "Awesome",
+    movie_id: 1,
+  }
+  ]
+)
