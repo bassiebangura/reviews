@@ -1,0 +1,15 @@
+
+<h1><b><%= pluralize(@users.size, "User") %></b></h1>
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+    
+        <p>
+          <b><%= link_to(user.name, user_path(user))%></b> was created <%= time_ago_in_words(user.created_at)%>.
+        </p>
+        <p>
+        <b>Email:</b> <%= user.email %>
+        </p>
+    </li>
+  <% end %>
+</ul>
