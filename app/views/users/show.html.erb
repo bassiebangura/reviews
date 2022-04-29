@@ -1,5 +1,18 @@
 
 <section class: "user">
+<%= profile_image(@user)%>
 <h1><b>Name:</b> <%= @user.name %></h1>
 <h2><b>Email:</b> <%= mail_to(@user.email) %></h2>
+<br>
+
+<h3>Member Since</h3>
+<p>
+  <%= @user.created_at.strftime("%B %Y") %>
+</p>
+
+<br>
+<div class="actions">
+    <%= link_to("Edit", edit_user_path(@user), class: "button edit" )%>
+    <%= button_to("Delete", @user, method: :delete, data: { confirm: "Are you sure?" }, class: "button delete")%>
+</div>
 </section>

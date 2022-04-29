@@ -27,6 +27,11 @@ class UsersController < ApplicationController
             render :edit
         end
     end
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        redirect_to movies_url, alert: "User deleted!"
+    end
     private
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
