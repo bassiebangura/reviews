@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :movies do
     resources :reviews
   end
- get "signup", to: "users#new"
+  get "signup", to: "users#new"
+  get "signin", to: "sessions#new"
+  get "signout", to: "sessions#destroy"
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
 end
