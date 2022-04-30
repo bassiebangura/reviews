@@ -1,18 +1,17 @@
 
-<section>
-<h1 class="button left">Sign In</h1>
+
+<h1>Sign In</h1>
 <p class="button right">
     <%= link_to "Sign Up", signup_path, class: "button" %>
 </p>
+<%= form_with(url: session_path, local: true) do |f| %>
 
+  <%= f.label :email %>
+  <%= f.email_field :email, autofocus: true %>
 
-    <%= form_with(url: session_path, local: true) do |f| %>
-      <%= f.label :email_or_username  %>
-      <%= f.text_field :text, autofocus: true, required: true %>
-      <%= f.label :password %>
-      <%= f.password_field :password, required: true %>
-      <%= f.submit "Sign In" %>
-    <% end %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
 
-    </section>
+  <%= f.submit "Sign In" %>
 
+<% end %>
