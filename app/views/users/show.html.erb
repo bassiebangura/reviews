@@ -12,8 +12,11 @@
 </p>
 
 <br>
+<% if current_user?(@user)%>
 <div class="actions">
     <%= link_to("Edit", edit_user_path(@user), class: "button edit" )%>
     <%= button_to("Delete", @user, method: :delete, data: { confirm: "Are you sure?" }, class: "button delete")%>
 </div>
+
+<% end %>
 </section>

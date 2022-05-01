@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
    
     before_action :require_sigin, expect: [:new, :create]
+    before_action :require_correct_user, only: [:edit, :update, :destroy]
     
     def index
         @users = User.all
@@ -21,10 +22,8 @@ class UsersController < ApplicationController
         end
     end
     def edit
-        @user = User.find(params[:id])
     end
     def update
-        @user = User.find(params[:id])
         if @user.update(user_params)
             redirect_to users_path, notice: "User updated!"
         else
@@ -32,12 +31,15 @@ class UsersController < ApplicationController
         end
     end
     def destroy
-        @user = User.find(params[:id])
         session[:user_id] = nil
         @user.destroy
         redirect_to movies_url, alert: "User deleted!"
     end
     private
+    def require_correct_user
+        @user = User.find(params[:id])
+        redirect_to users_path, alert: "Access denied." unless current_user?(@user)
+    end
     def user_params
         params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
     end
