@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+    before_action :require_signin, except: [:index, :show]
+    before_action :require_admin, except: [:index, :show]
     def index
         @movies = Movie.all
     end
@@ -33,6 +35,9 @@ class MoviesController < ApplicationController
     private
     def movie_params
         params.require(:movie).permit(:title, :description, :released_on, :total_gross, :rating)
+    end
+    def require_admin
+        redirect_to movies_path, alert: "Access denied." unless current_user.admin?
     end
 end
 
