@@ -36,8 +36,5 @@ class MoviesController < ApplicationController
     def movie_params
         params.require(:movie).permit(:title, :description, :released_on, :total_gross, :rating)
     end
-    def require_admin
-        redirect_to movies_path, alert: "Access denied." unless current_user.admin?
-    end
 end
 
