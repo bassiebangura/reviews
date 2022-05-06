@@ -1,6 +1,15 @@
 <section>
 <h1>Post A Review </h1>
 <%= form_with(model: [@movie, @review], local: true) do |f| %>
+
+        <%= f.label :stars %>
+                <% Review::STARS.each do |star| %>
+                <span class="star">
+                <%= f.radio_button :stars, star %>
+                <%= label_tag star %>
+                </span>
+        <% end %>
+
         <%= f.label :comment, rows: 20 %>
         <%= f.text_area :comment, placeholder: "Add your review here" %>
         
