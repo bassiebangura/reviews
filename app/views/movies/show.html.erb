@@ -1,6 +1,16 @@
 
 <section class="movie-details">
     <div class="details">
+    <aside>
+    <h4>Movie Fans</h4>
+    <% if @fans.present?%>
+    <ul class="fans">
+        <% @fans.each do |fan| %>   
+          <%= link_to fan.name, fan %>
+        <% end %>
+     </ul>
+    <% end %>
+    </aside>
         <h1><%= @movie.title %></h1>
         <h2><%= year_of(@movie)%> &bull; <%= @movie.rating%>
         <p>
@@ -20,7 +30,7 @@
 </section>
 
 <section>    <%= link_to pluralize(@movie.reviews.size, "review"), movie_reviews_path(@movie), class: "button"%></section>
-<% if current_user_admin?%>
+<% if current_user_admin? %>
 <section class="admin">
     <%= link_to "Edit", edit_movie_path(@movie), class: "button"%>
     <%= button_to "Delete", @movie, class: "button",
