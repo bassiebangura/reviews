@@ -18,8 +18,28 @@
     <%= button_to("Delete", @user, method: :delete, data: { confirm: "Are you sure?" }, class: "button delete")%>
 </div>
 
+  <div>
+    <h2>Favorites</h2>
+  
+    <% if @favorite_movies.present?%>
+    <ul class="fans">
+        <% @favorite_movies.each do |movie| %>   
+           <div class="details">
+          <span class="title">
+            <%= link_to movie.title, movie %>
+          </span>
+          <span class="date">
+            <%= time_ago_in_words(movie.created_at) %> ago
+          </span>
+          
+        </div>
+        <% end %>
+     </ul>
+    <% end %>
+    </div>
+
 <% if @reviews.present? %>
-    <h3>Reviews</h3>
+    <h2>Reviews</h2>
     <% @reviews.each do |review| %>
       <div class="review">
         <div class="details">
