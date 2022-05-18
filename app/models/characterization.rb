@@ -1,0 +1,2 @@
+class Characterization < ApplicationRecord
+end
